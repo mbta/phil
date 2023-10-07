@@ -9,7 +9,18 @@ import Config
 
 config :phil,
   ecto_repos: [Phil.Repo],
-  generators: [binary_id: true]
+  generators: [binary_id: true],
+  redirect_http?: true,
+  timezone: "America/New_York"
+
+config(:phil, date_time_module: DateTime, timer_module: :timer)
+config(:phil, http_module: Phil.Http)
+
+config(:elixir, :time_zone_database, Tzdata.TimeZoneDatabase)
+
+config :phil, Phil.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  migration_timestamps: [type: :utc_datetime_usec]
 
 # Configures the endpoint
 config :phil, PhilWeb.Endpoint,

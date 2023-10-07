@@ -19,7 +19,13 @@ config :phil, Phil.Repo,
 config :phil, PhilWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {127, 0, 0, 1}, port: 4000],
+  https: [
+    ip: {0, 0, 0, 0},
+    port: 4000,
+    cipher_suite: :strong,
+    keyfile: "priv/cert/selfsigned_key.pem",
+    certfile: "priv/cert/selfsigned.pem"
+  ],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
@@ -54,6 +60,7 @@ config :phil, PhilWeb.Endpoint,
 
 # Watch static and templates for browser reloading.
 config :phil, PhilWeb.Endpoint,
+  url: [host: "phil.localhost"],
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
