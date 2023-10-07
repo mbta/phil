@@ -48,6 +48,7 @@ defmodule Phil.MixProject do
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:diskusage_logger, "~> 0.2.0", only: [:prod]},
       {:ecto_sql, "~> 3.10"},
+      {:ehmon, github: "mbta/ehmon", only: :prod},
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:finch, "~> 0.13"},
       {:floki, ">= 0.30.0", only: :test},
