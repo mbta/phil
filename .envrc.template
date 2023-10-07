@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# ^ added for shellcheck and file-type detection
+
+## Single Sign-on configuration.
+### Used for local dev, cloud environments make use of Terraform env vars
+# export KEYCLOAK_BASE_URI=
+# export KEYCLOAK_CLIENT_ID=
+# export KEYCLOAK_CLIENT_SECRET=
+# export KEYCLOAK_REDIRECT_URI=
+# export KEYCLOAK_WELL_KNOWN_OIDC=
