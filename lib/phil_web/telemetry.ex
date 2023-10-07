@@ -1,4 +1,7 @@
 defmodule PhilWeb.Telemetry do
+  @moduledoc """
+  A module providing telemetry for the web app
+  """
   use Supervisor
   import Telemetry.Metrics
 
