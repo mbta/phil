@@ -35,5 +35,9 @@ phil-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Self-signed dev certs
+priv/cert/selfsigned*.pem
+
 # Environment variables in dev
 .envrc
+.env
