@@ -1,5 +1,6 @@
 # --- Set up Elixir build ---
 FROM hexpm/elixir:1.15.6-erlang-26.1.1-debian-bookworm-20230612-slim as elixir-builder
+# FROM hexpm/elixir:1.15.6-erlang-26.1.1-debian-bullseye-20230612-slim as elixir-builder
 
 ENV LANG=C.UTF-8 MIX_ENV=prod
 
@@ -34,11 +35,15 @@ RUN mix release
 
 # --- Set up runtime container ---
 FROM debian:bookworm-slim
+# FROM debian:bullseye-slim
 
 ENV LANG=C.UTF-8 MIX_ENV=prod REPLACE_OS_VARS=true
 
 RUN apt-get update --allow-releaseinfo-change \
-    && apt-get install --no-install-recommends --yes dumb-init \
+    && apt-get install --no-install-recommends --yes \
+    # erlang-crypto requires libssl
+    libssl3 \
+    dumb-init \
     && rm -rf /var/lib/apt/lists/*
 
 # Create non-root user
