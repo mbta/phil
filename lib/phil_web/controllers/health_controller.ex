@@ -1,0 +1,12 @@
+defmodule PhilWeb.HealthController do
+  @moduledoc """
+  Simple controller to return 200 OK when the application is running.
+  This is used by the AWS ALB to determine the health of the target.
+  """
+  use PhilWeb, :controller
+
+  @spec health_check(Plug.Conn.t(), any) :: Plug.Conn.t()
+  def health_check(conn, _params) do
+    send_resp(conn, :ok, "Ok")
+  end
+end
