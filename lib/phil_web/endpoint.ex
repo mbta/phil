@@ -32,6 +32,8 @@ defmodule PhilWeb.Endpoint do
     plug Phoenix.Ecto.CheckRepoStatus, otp_app: :phil
   end
 
+  plug Logster.Plugs.Logger
+
   plug Phoenix.LiveDashboard.RequestLogger,
     param_key: "request_logger",
     cookie_key: "request_logger"
