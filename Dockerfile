@@ -59,7 +59,7 @@ COPY --from=app-builder --chown=phil:phil /root/_build/prod/rel/phil .
 COPY --from=app-builder --chown=phil:phil /root/aws-cert-bundle.pem ./priv/aws-cert-bundle.pem
 
 # HTTP
-EXPOSE 4000
+EXPOSE 4001
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 

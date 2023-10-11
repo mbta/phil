@@ -46,7 +46,7 @@ Phil is a backoffice-facing application used to manage card/pass fulfillment con
 * Start the Phoenix server:
   * Directly with `mix phx.server`
   * Inside IEx with `iex -S mix phx.server`
-* Visit [`phil.localhost:4000`](http://phil.localhost:4000) from your browser
+* Visit [`phil.localhost:4001`](http://phil.localhost:4001) from your browser
 
 ## Testing, linting and static analysis
 

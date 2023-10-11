@@ -24,7 +24,7 @@ config :phil, Phil.Repo,
 
 # Configures the endpoint
 config :phil, PhilWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "phil.localhost"],
   render_errors: [
     formats: [html: PhilWeb.ErrorHTML, json: PhilWeb.ErrorJSON],
     layout: false
