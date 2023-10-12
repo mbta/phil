@@ -19,7 +19,7 @@ jobs:
     env:
       TARGET: ${{ github.event.inputs.env || 'staging' }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: mbta/actions/build-push-ecr@v1
         id: build-push
         with:
