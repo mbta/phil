@@ -87,7 +87,7 @@ jobs:
     needs: build
     services:
       postgres:
-        image: postgres:14
+        image: postgres:15
         ports:
           - 5432:5432
         env:
