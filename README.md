@@ -62,6 +62,23 @@ Run formatting and code analysis with the following:
 
 Note: all of these can be run in sequence with one command: `mix check`
 
+## Note: HTTP Redirect to HTTPS
+
+In deployed environments, we use the `Plug.SSL` plug to automatically redirect HTTP traffic to HTTPS.
+While Phoenix does not terminate the SSL, it uses the `x-forwarded-proto` request header to verify
+HTTPS traffic from the ALB. In development environments, we are setup to use self-signed certs to mimic
+HTTPS handling, but that termination is done by Phoenix directly.
+
+If you want to test things like the `/_health` endpoint, which is excluded from HTTPS redirects
+intentionally, you'll need to enable an HTTP listener on another port, and use that port to test it
+locally. For that to work, you'll also need to disable the `:redirect_http?` config flag (to `false`).
+You can see commented lines in `config/dev.exs` that enable this.
+
+If you want to test HTTPS redirect behavior, you'll need to have an HTTP listener on a separate port,
+and you'll need to either provide or not provide the `x-forwarded-proto` header with a protocol value
+of `https` to govern whether the traffic is coming from an HTTPS source or not. With the appropriate
+header, traffic should go through as expected; without it, traffic should be redirected with a 301.
+
 ## Deploying the app
 
 Deployment is managed via Github Actions CI workflow **Deploy to Dev**.
