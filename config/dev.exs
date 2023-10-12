@@ -1,5 +1,10 @@
 import Config
 
+# Disable http redirection if you need to work on the health check endpoint,
+# but not to verify redirect behavior
+# See information about this in the README ("HTTP Redirect to HTTPS")
+# config :phil, redirect_http?: false
+
 # Configure your database
 config :phil, Phil.Repo,
   username: "postgres",
@@ -19,6 +24,12 @@ config :phil, Phil.Repo,
 config :phil, PhilWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
+  # Enable the http listener if you need to work on the health check endpoint or on https redirect behavior
+  # See information about this in the README ("HTTP Redirect to HTTPS")
+  # http: [
+  #   ip: {0, 0, 0, 0},
+  #   port: 4011
+  # ],
   https: [
     ip: {0, 0, 0, 0},
     port: 4001,
