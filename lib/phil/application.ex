@@ -5,8 +5,6 @@ defmodule Phil.Application do
 
   use Application
 
-  require Logger
-
   @impl true
   def start(_type, _args) do
     children = [
@@ -28,7 +26,6 @@ defmodule Phil.Application do
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Phil.Supervisor]
 
-    Logger.info("Starting supervisor with children...")
     Supervisor.start_link(children, opts)
   end
 
@@ -36,10 +33,6 @@ defmodule Phil.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    Logger.info(
-      "Received config change for Endpoint. changed = #{inspect(changed)}, removed = #{inspect(removed)}"
-    )
-
     PhilWeb.Endpoint.config_change(changed, removed)
     :ok
   end
