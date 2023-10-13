@@ -23,7 +23,7 @@ end
 if config_env() == :prod do
   config :phil, Phil.Repo,
     ssl: true,
-    configure: {MyCharlie.Repo, :configure_production_connection, []}
+    configure: {Phil.Repo, :configure_production_connection, []}
 
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
@@ -104,4 +104,6 @@ if config_env() == :prod do
   #     config :swoosh, :api_client, Swoosh.ApiClient.Hackney
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
+
+  IO.puts("Completed setting runtime config...")
 end

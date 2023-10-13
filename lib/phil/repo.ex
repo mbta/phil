@@ -15,6 +15,7 @@ defmodule Phil.Repo do
         config,
         auth_token_fn \\ &ExAws.RDS.generate_db_auth_token/4
       ) do
+    Logger.info("Getting configuration variables for database connection...")
     hostname = System.fetch_env!("DATABASE_HOST")
     username = System.fetch_env!("DATABASE_USER")
     database = System.fetch_env!("DATABASE_NAME")

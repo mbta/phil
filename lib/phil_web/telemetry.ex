@@ -19,6 +19,7 @@ defmodule PhilWeb.Telemetry do
       # {Telemetry.Metrics.ConsoleReporter, metrics: metrics()}
     ]
 
+    IO.puts("Initializing supervisor for PhilWeb.Telemetry")
     Supervisor.init(children, strategy: :one_for_one)
   end
 
