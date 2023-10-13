@@ -17,7 +17,7 @@ import Config
 # Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
 if System.get_env("PHX_SERVER") do
-  config :phil, PhilWeb.Endpoint, server: true
+  config :phil, PhilWeb.Endpoint, server: true |> IO.inspect(label: "Endpoint config: server")
 end
 
 if config_env() == :prod do
@@ -37,23 +37,22 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  host =
-    System.get_env("PHX_HOST", "phil.localhost") |> IO.inspect(label: "Endpoint config: host")
+  host = System.get_env("PHX_HOST", "phil.localhost")
 
-  port =
-    String.to_integer(System.get_env("PORT", "4001"))
-    |> IO.inspect(label: "Endpoint config: port")
+  port = String.to_integer(System.get_env("PORT", "4001"))
 
   config :phil, PhilWeb.Endpoint,
-    url: [host: host, port: 443, scheme: "https"],
-    http: [
-      # Enable IPv6 and bind on all interfaces.
-      # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
-      # See the documentation on https://hexdocs.pm/plug_cowboy/Plug.Cowboy.html
-      # for details about using IPv6 vs IPv4 and loopback vs public addresses.
-      ip: {0, 0, 0, 0, 0, 0, 0, 0},
-      port: port
-    ],
+    url: [host: host, port: 443, scheme: "https"] |> IO.inspect("Endpoint config: url"),
+    http:
+      [
+        # Enable IPv6 and bind on all interfaces.
+        # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
+        # See the documentation on https://hexdocs.pm/plug_cowboy/Plug.Cowboy.html
+        # for details about using IPv6 vs IPv4 and loopback vs public addresses.
+        ip: {0, 0, 0, 0, 0, 0, 0, 0},
+        port: port
+      ]
+      |> IO.inspect(label: "Endpoint config: http listener"),
     secret_key_base: secret_key_base
 
   # ## SSL Support
