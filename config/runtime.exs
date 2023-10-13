@@ -42,7 +42,7 @@ if config_env() == :prod do
   port = String.to_integer(System.get_env("PORT", "4001"))
 
   config :phil, PhilWeb.Endpoint,
-    url: [host: host, port: 443, scheme: "https"] |> IO.inspect("Endpoint config: url"),
+    url: [host: host, port: 443, scheme: "https"] |> IO.inspect(label: "Endpoint config: url"),
     http:
       [
         # Enable IPv6 and bind on all interfaces.
