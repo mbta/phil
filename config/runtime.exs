@@ -37,8 +37,8 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "phil.localhost"
-  port = String.to_integer(System.get_env("PORT") || "4001")
+  host = System.get_env("PHX_HOST", "phil.localhost")
+  port = String.to_integer(System.get_env("PORT", "4001"))
 
   config :phil, PhilWeb.Endpoint,
     url: [host: host, port: 443, scheme: "https"],

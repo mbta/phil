@@ -13,9 +13,9 @@ defmodule Phil.Repo do
         config,
         auth_token_fn \\ &ExAws.RDS.generate_db_auth_token/4
       ) do
-    hostname = System.get_env("DATABASE_HOST")
-    username = System.get_env("DATABASE_USER")
-    database = System.get_env("DATABASE_NAME")
+    hostname = System.fetch_env!("DATABASE_HOST")
+    username = System.fetch_env!("DATABASE_USER")
+    database = System.fetch_env!("DATABASE_NAME")
     port = System.get_env("DATABASE_PORT", "5432") |> String.to_integer()
     maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
