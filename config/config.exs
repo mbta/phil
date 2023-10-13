@@ -14,7 +14,7 @@ config :phil,
   timezone: "America/New_York"
 
 config(:phil, date_time_module: DateTime, timer_module: :timer)
-config(:phil, http_module: Phil.Http)
+# config(:phil, http_module: Phil.Http)
 
 config(:elixir, :time_zone_database, Tzdata.TimeZoneDatabase)
 
