@@ -3,6 +3,8 @@ defmodule Phil.Repo do
     otp_app: :phil,
     adapter: Ecto.Adapters.Postgres
 
+  require Logger
+
   @doc """
   Set via the `:configure` option in the Repo configuration, a function invoked
   prior to each DB connection in production. `config` is the configured
@@ -19,7 +21,9 @@ defmodule Phil.Repo do
     port = System.get_env("DATABASE_PORT", "5432") |> String.to_integer()
     maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
+    Logger.info("In Phil.Repo.configure_production_connection: calling auth_token_fn")
     token = auth_token_fn.(hostname, username, port, %{})
+    Logger.info("In Phil.Repo.configure_production_connection: got token")
 
     Keyword.merge(config,
       hostname: hostname,
