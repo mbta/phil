@@ -20,7 +20,7 @@ Phil is a backoffice-facing application used to manage card/pass fulfillment con
 * Update your `/etc/hosts` file (using `sudo` mode) to create a `phil.localhost` hostname by adding the following lines at the bottom:
 
   ```{sh}
-  # MyCharlie for SSO setup with Keycloak in dev
+  # Phil for SSO setup with Keycloak in dev
   127.0.0.1	phil.localhost
   ```
 
