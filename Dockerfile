@@ -11,7 +11,7 @@ RUN mix local.hex --force
 RUN mix local.rebar --force
 
 WORKDIR /root
-ADD . .
+COPY . .
 RUN mix deps.get --only prod
 
 # --- Build Elixir release ---
@@ -56,6 +56,7 @@ ENV MIX_ENV=prod PHX_SERVER=true TERM=xterm LANG=C.UTF-8 REPLACE_OS_VARS=true
 WORKDIR /home/phil
 
 COPY --from=app-builder --chown=phil:phil /root/_build/prod/rel/phil .
+COPY --from=app-builder --chown=phil:phil /root/priv ./priv
 COPY --from=app-builder --chown=phil:phil /root/aws-cert-bundle.pem ./priv/aws-cert-bundle.pem
 
 # HTTP

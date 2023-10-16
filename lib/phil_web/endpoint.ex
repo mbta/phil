@@ -1,6 +1,8 @@
 defmodule PhilWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :phil
 
+  plug Logster.Plugs.Logger
+
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
@@ -31,8 +33,6 @@ defmodule PhilWeb.Endpoint do
     plug Phoenix.CodeReloader
     plug Phoenix.Ecto.CheckRepoStatus, otp_app: :phil
   end
-
-  plug Logster.Plugs.Logger
 
   plug Phoenix.LiveDashboard.RequestLogger,
     param_key: "request_logger",
