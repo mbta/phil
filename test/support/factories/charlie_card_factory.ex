@@ -1,4 +1,6 @@
 defmodule Phil.Support.CharlieCardFactory do
+  @moduledoc false
+
   use ExMachina.Ecto, repo: Phil.Repo
 
   alias Phil.CharlieCards.CharlieCard
