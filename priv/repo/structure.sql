@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.9
+-- Dumped from database version 15.3 (Debian 15.3-1.pgdg120+1)
 -- Dumped by pg_dump version 15.4
 
 SET statement_timeout = 0;
@@ -16,16 +16,50 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- Name: public; Type: SCHEMA; Schema: -; Owner: -
---
-
--- *not* creating schema, since initdb creates it
-
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
+
+--
+-- Name: charlie_cards; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.charlie_cards (
+    id bigint NOT NULL,
+    batch_number integer NOT NULL,
+    batch_sequence_number integer NOT NULL,
+    card_valid_from timestamp(0) without time zone NOT NULL,
+    card_valid_until timestamp(0) without time zone NOT NULL,
+    product character varying(255) NOT NULL,
+    product_valid_from timestamp(0) without time zone NOT NULL,
+    product_valid_until timestamp(0) without time zone NOT NULL,
+    production_date timestamp(0) without time zone NOT NULL,
+    sequence_number integer NOT NULL,
+    serial_number integer NOT NULL,
+    status character varying(255) DEFAULT 'unknown'::character varying NOT NULL,
+    inserted_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: charlie_cards_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.charlie_cards_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: charlie_cards_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.charlie_cards_id_seq OWNED BY public.charlie_cards.id;
+
 
 --
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
@@ -35,6 +69,21 @@ CREATE TABLE public.schema_migrations (
     version bigint NOT NULL,
     inserted_at timestamp(0) without time zone
 );
+
+
+--
+-- Name: charlie_cards id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.charlie_cards ALTER COLUMN id SET DEFAULT nextval('public.charlie_cards_id_seq'::regclass);
+
+
+--
+-- Name: charlie_cards charlie_cards_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.charlie_cards
+    ADD CONSTRAINT charlie_cards_pkey PRIMARY KEY (id);
 
 
 --
@@ -49,3 +98,4 @@ ALTER TABLE ONLY public.schema_migrations
 -- PostgreSQL database dump complete
 --
 
+INSERT INTO public."schema_migrations" (version) VALUES (20231113160043);

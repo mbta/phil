@@ -1,11 +1,7 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Phil.Repo.insert!(%Phil.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+alias Phil.CharlieCards.CharlieCard
+alias Phil.Repo
+alias Phil.Support.CharlieCardFactory
+
+Repo.delete_all(CharlieCard)
+
+CharlieCardFactory.insert_list(100, :charlie_card, batch_number: 1)

@@ -36,6 +36,7 @@ defmodule Phil.MixProject do
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(:dev), do: ["lib", "test/support/factories"]
   defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
@@ -52,6 +53,8 @@ defmodule Phil.MixProject do
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:ex_aws, "2.5.0"},
       {:ex_aws_rds, "~> 2.0"},
+      {:ex_machina, "2.7.0"},
+      {:faker, "0.17.0"},
       {:finch, "~> 0.13"},
       {:floki, ">= 0.30.0", only: :test},
       {:gettext, "~> 0.20"},
