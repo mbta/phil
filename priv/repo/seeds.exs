@@ -1,36 +1,7 @@
-alias Phil.Partners.Partner
+alias Phil.CharlieCards.CharlieCard
 alias Phil.Repo
+alias Phil.Support.CharlieCardFactory
 
-Repo.delete_all(Partner)
+Repo.delete_all(CharlieCard)
 
-Enum.each(
-  [
-    "Acton",
-    "Attleboro",
-    "Arlington",
-    "Boston",
-    "Brockton",
-    "Brookline",
-    "Cambridge",
-    "Chelsea",
-    "Everett",
-    "Framingham",
-    "Lexington",
-    "Malden",
-    "Medford",
-    "Melrose",
-    "Newton",
-    "North Shore",
-    "Quincy",
-    "Reading",
-    "Revere",
-    "Somerville",
-    "Wakefield",
-    "Watertown",
-    "Winthrop",
-    "Worcester"
-  ],
-  fn name ->
-    Repo.insert!(%Partner{name: name, type: :municipality})
-  end
-)
+CharlieCardFactory.insert_list(100, :charlie_card)
