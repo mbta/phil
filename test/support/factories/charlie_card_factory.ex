@@ -7,8 +7,8 @@ defmodule Phil.Support.CharlieCardFactory do
 
   def charlie_card_factory do
     %CharlieCard{
-      batch_number: Enum.random(0..100),
-      batch_sequence_number: Enum.random(0..100),
+      batch_number: Enum.random(1..9),
+      batch_sequence_number: sequence("") |> String.to_integer(),
       card_valid_from: Timex.now(),
       card_valid_until: Timex.end_of_year(Timex.now()),
       product: CharlieCard.products() |> Enum.random(),
