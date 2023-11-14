@@ -1,12 +1,4 @@
 defmodule Phil.Repo.Migrations.AddCharlieCardsTable do
-  @moduledoc """
-  Product is an enum that tells us what type of medium it is.
-
-  Status is an enum telling us the status of the medium.
-
-  Media can be associated with a bulk shipment.
-  """
-
   use Ecto.Migration
 
   def change do
