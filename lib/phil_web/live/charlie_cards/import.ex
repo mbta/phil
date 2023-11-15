@@ -17,11 +17,9 @@ defmodule PhilWeb.Live.CharlieCards.Import do
   def handle_event("process", _params, socket) do
     results =
       consume_uploaded_entries(socket, :inventory, fn %{path: path}, _ ->
-        {:ok, Importer.import(path) |> Enum.to_list()}
+        {:ok, Importer.import(path)}
       end)
-      |> List.flatten()
-      |> Keyword.get(:ok, [])
-      |> Enum.group_by(fn {status, _} -> status end, fn {_, value} -> value end)
+      |> List.first()
 
     {:noreply, assign(socket, results: Map.merge(socket.assigns.results, results))}
   end

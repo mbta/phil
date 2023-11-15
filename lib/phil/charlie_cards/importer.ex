@@ -15,6 +15,8 @@ defmodule Phil.CharlieCards.Importer do
     |> Stream.map(&row_to_changeset/1)
     |> Stream.chunk_every(100)
     |> Task.async_stream(&insert_batch/1, max_concurrency: 64, ordered: false)
+    |> Enum.reduce([], fn {:ok, results}, acc -> acc ++ results end)
+    |> Enum.group_by(fn {status, _} -> status end, fn {_, value} -> value end)
   end
 
   defp insert_batch(changesets) do
