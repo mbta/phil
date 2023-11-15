@@ -46,13 +46,13 @@ defmodule PhilWeb.Live.CharlieCards.Import do
       <h3 class="border-b-2 border-red-200 font-bold mb-4 text-xl">
         Uh oh!
         <span class="ml-1 text-sm">
-          Please check these <%= Kernel.length(assigns.results.error) %> errors.
+          Please check these <%= Kernel.length(@failures) %> failures.
         </span>
       </h3>
-      <div :for={result <- @results.error} class="mb-3">
-        <p><span class="font-bold">Serial Number</span>: <%= result.changes.serial_number %></p>
+      <div :for={failure <- @failures} class="mb-3">
+        <p><span class="font-bold">Serial Number</span>: <%= failure.changes.serial_number %></p>
         <ul class="list-disc list-inside text-red-700">
-          <li :for={error <- result.errors}>
+          <li :for={error <- failure.errors}>
             <span class="underline"><%= Kernel.elem(error, 0) %></span>
             <%= Kernel.elem(error, 1) |> Kernel.elem(0) %>
           </li>
@@ -64,8 +64,8 @@ defmodule PhilWeb.Live.CharlieCards.Import do
 
   defp results(assigns) do
     ~H"""
-    <.successes :if={Kernel.length(@results.ok) > 0} results={@results} />
-    <.failures :if={Kernel.length(@results.error) > 0} results={@results} />
+    <.successes :if={Kernel.length(@results.ok) > 0} succeses={@results.ok} />
+    <.failures :if={Kernel.length(@results.error) > 0} failures={@results.error} />
     """
   end
 
@@ -76,7 +76,7 @@ defmodule PhilWeb.Live.CharlieCards.Import do
       role="alert"
     >
       <h3 class="border-b-2 border-teal-200 font-bold mb-4 text-xl">Nice job!</h3>
-      You inserted <%= Kernel.length(assigns.results.ok) %> CharlieCards.
+      You inserted <%= Kernel.length(@succeses) %> CharlieCards.
     </div>
     """
   end
