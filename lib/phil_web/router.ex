@@ -38,6 +38,8 @@ defmodule PhilWeb.Router do
     pipe_through [:set_log_level, :redirect_http, :browser]
 
     get "/", PageController, :home
+
+    live("/charliecards/import", Live.CharlieCards.Import, :import)
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

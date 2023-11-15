@@ -35,10 +35,10 @@ CREATE TABLE public.charlie_cards (
     product_valid_until timestamp(0) without time zone NOT NULL,
     production_date timestamp(0) without time zone NOT NULL,
     sequence_number integer NOT NULL,
-    serial_number integer NOT NULL,
     status character varying(255) DEFAULT 'unknown'::character varying NOT NULL,
     inserted_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    serial_number character varying(255)
 );
 
 
@@ -95,7 +95,15 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
+-- Name: charlie_cards_serial_number_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX charlie_cards_serial_number_index ON public.charlie_cards USING btree (serial_number);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 INSERT INTO public."schema_migrations" (version) VALUES (20231113160043);
+INSERT INTO public."schema_migrations" (version) VALUES (20231115170528);

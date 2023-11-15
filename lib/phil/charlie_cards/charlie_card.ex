@@ -17,8 +17,10 @@ defmodule Phil.CharlieCards.CharlieCard do
 
   use Ecto.Schema
 
+  alias Ecto.Changeset
+
   @products ~w(youth_pass)a
-  @statuses ~w(available unknown)a
+  @statuses ~w(afc available csp shipped testing unknown)a
 
   schema "charlie_cards" do
     field(:batch_number, :integer)
@@ -30,10 +32,17 @@ defmodule Phil.CharlieCards.CharlieCard do
     field(:product_valid_until, :utc_datetime)
     field(:production_date, :utc_datetime)
     field(:sequence_number, :integer)
-    field(:serial_number, :integer)
+    field(:serial_number, :string)
     field(:status, Ecto.Enum, values: @statuses)
 
     timestamps()
+  end
+
+  def changeset(attrs) do
+    %__MODULE__{}
+    |> Changeset.cast(attrs, __schema__(:fields) -- [:id, :inserted_at, :updated_at])
+    |> Changeset.validate_required(__schema__(:fields) -- [:id, :inserted_at, :updated_at])
+    |> Changeset.unique_constraint(:serial_number)
   end
 
   @doc """

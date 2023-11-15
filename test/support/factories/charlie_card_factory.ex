@@ -16,7 +16,7 @@ defmodule Phil.Support.CharlieCardFactory do
       product_valid_until: Timex.end_of_year(Timex.now()),
       production_date: Timex.now(),
       sequence_number: Enum.random(100..200),
-      serial_number: Enum.random(1_000_000..5_000_000),
+      serial_number: Enum.random(1_000_000..5_000_000) |> Integer.to_string(),
       status: CharlieCard.statuses() |> Enum.random()
     }
   end
