@@ -1,6 +1,6 @@
 defmodule Phil.CharlieCards.Importer do
   @moduledoc """
-
+  Imports CharlieCard inventory into Phil.
   """
 
   alias NimbleCSV.RFC4180, as: CSV
@@ -8,13 +8,19 @@ defmodule Phil.CharlieCards.Importer do
   alias Phil.CharlieCards.CharlieCard
   alias Phil.Repo
 
+  @doc """
+  Given the path of a file, this function attempts to import CharlieCards.
+
+  It returns a map of successes and failures like %{error: [], ok: []}.
+  Error entries are changesets and success entries are the inserted struct.
+  """
   def import(path) do
     path
     |> File.stream!()
     |> CSV.parse_stream()
     |> Stream.map(&row_to_changeset/1)
     |> Stream.chunk_every(100)
-    |> Task.async_stream(&insert_batch/1, max_concurrency: 64, ordered: false)
+    |> Task.async_stream(&insert_batch/1, max_concurrency: 10, ordered: false)
     |> Enum.reduce([], fn {:ok, results}, acc -> acc ++ results end)
     |> Enum.group_by(fn {status, _} -> status end, fn {_, value} -> value end)
   end
@@ -30,9 +36,8 @@ defmodule Phil.CharlieCards.Importer do
   end
 
   defp parse_date(string) do
-    with {:ok, datetime} <- Timex.parse(string, "%-m/%d/%Y %H:%M", :strftime) do
-      Timex.format!(datetime, "%Y-%m-%d %H:%M", :strftime)
-    else
+    case Timex.parse(string, "%-m/%d/%Y %H:%M", :strftime) do
+      {:ok, datetime} -> Timex.format!(datetime, "%Y-%m-%d %H:%M", :strftime)
       _ -> "..."
     end
   end

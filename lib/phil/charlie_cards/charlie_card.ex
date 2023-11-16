@@ -38,6 +38,9 @@ defmodule Phil.CharlieCards.CharlieCard do
     timestamps()
   end
 
+  @doc """
+  Create a CharlieCard from a map of attributes.
+  """
   def changeset(attrs) do
     %__MODULE__{}
     |> Changeset.cast(attrs, __schema__(:fields) -- [:id, :inserted_at, :updated_at])

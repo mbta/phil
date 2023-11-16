@@ -1,6 +1,6 @@
 alias Phil.CharlieCards.CharlieCard
 alias Phil.Repo
-alias Phil.Support.CharlieCardFactory
+alias Phil.Support.Factories.CharlieCardFactory
 
 Repo.delete_all(CharlieCard)
 

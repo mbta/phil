@@ -17,6 +17,8 @@ defmodule PhilWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  import Plug.Test
+
   using do
     quote do
       # The default endpoint for testing
@@ -25,8 +27,9 @@ defmodule PhilWeb.ConnCase do
       use PhilWeb, :verified_routes
 
       # Import conveniences for testing with connections
-      import Plug.Conn
       import Phoenix.ConnTest
+      import Plug.Conn
+
       import PhilWeb.ConnCase
     end
   end
