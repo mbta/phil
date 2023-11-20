@@ -54,6 +54,7 @@ defmodule Phil.MixProject do
       {:ex_aws, "2.5.0"},
       {:ex_aws_rds, "~> 2.0"},
       {:ex_machina, "2.7.0"},
+      {:excellent_migrations, "~> 0.1.6", only: [:dev, :test], runtime: false},
       {:faker, "0.17.0"},
       {:finch, "~> 0.13"},
       {:floki, ">= 0.30.0", only: :test},
@@ -91,15 +92,21 @@ defmodule Phil.MixProject do
   defp aliases do
     [
       setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build", "phx.gen.cert"],
-      "ecto.setup": ["ecto.create", "ecto.load", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.setup": [
+        "ecto.create",
+        "ecto.load",
+        "ecto.migrate",
+        "run priv/repo/seeds.exs"
+      ],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "ecto.migrate": ["ecto.migrate", "ecto.dump"],
+      "ecto.migrate": ["excellent_migrations.migrate", "ecto.dump"],
       test: ["ecto.drop", "ecto.create --quiet", "ecto.load", "test"],
       check: [
         "format",
         "compile --force --all-warnings",
         "dialyzer --quiet",
         "credo --strict",
+        "excellent_migrations.check_safety",
         "sobelow --skip --verbose --ignore Config.HTTPS"
       ],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
