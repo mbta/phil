@@ -19,15 +19,19 @@ defmodule Phil.CharlieCards.CharlieCard do
 
   alias Ecto.Changeset
 
-  @products ~w(youth_pass)a
+  alias Phil.Products.Product
+
+  @media ~w(card ticket)a
   @statuses ~w(afc available csp shipped testing unknown)a
 
   schema "charlie_cards" do
+    belongs_to(:product, Product)
+
     field(:batch_number, :integer)
     field(:batch_sequence_number, :integer)
     field(:card_valid_from, :utc_datetime)
     field(:card_valid_until, :utc_datetime)
-    field(:product, Ecto.Enum, values: @products)
+    field(:medium, Ecto.Enum, values: @media)
     field(:product_valid_from, :utc_datetime)
     field(:product_valid_until, :utc_datetime)
     field(:production_date, :utc_datetime)
@@ -43,15 +47,21 @@ defmodule Phil.CharlieCards.CharlieCard do
   """
   def changeset(attrs) do
     %__MODULE__{}
-    |> Changeset.cast(attrs, __schema__(:fields) -- [:id, :inserted_at, :updated_at])
-    |> Changeset.validate_required(__schema__(:fields) -- [:id, :inserted_at, :updated_at])
+    |> Changeset.cast(
+      attrs,
+      (__schema__(:fields) ++ [:product_id]) -- [:id, :inserted_at, :updated_at]
+    )
+    |> Changeset.validate_required(
+      (__schema__(:fields) ++ [:product_id]) -- [:id, :inserted_at, :updated_at]
+    )
+    |> Changeset.foreign_key_constraint(:product_id)
     |> Changeset.unique_constraint(:serial_number)
   end
 
   @doc """
-  Return all possible product types of a CharlieCard.
+  Return all possible media types for a CharlieCard.
   """
-  def products, do: @products
+  def media, do: @media
 
   @doc """
   Return all possible statuses for a CharlieCard.

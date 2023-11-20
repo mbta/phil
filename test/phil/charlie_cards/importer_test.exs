@@ -4,6 +4,12 @@ defmodule Phil.CharlieCards.ImporterTest do
   alias Phil.CharlieCards.Importer
 
   describe "import/1" do
+    setup do
+      Phil.Products.Importer.import("test/support/fixtures/products_import.csv")
+
+      :ok
+    end
+
     test "returns 9 successes and 1 failure based on one duplicate in the data" do
       result = Importer.import("test/support/fixtures/charlie_cards_import.csv")
 

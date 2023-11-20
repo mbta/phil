@@ -17,8 +17,6 @@ defmodule PhilWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
-  import Plug.Test
-
   using do
     quote do
       # The default endpoint for testing

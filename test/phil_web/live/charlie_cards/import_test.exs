@@ -3,6 +3,14 @@ defmodule PhilWeb.Live.CharlieCards.Import do
 
   import Phoenix.LiveViewTest
 
+  alias Phil.Products
+
+  setup do
+    Products.Importer.import("test/support/fixtures/products_import.csv")
+
+    :ok
+  end
+
   test "shows 9 successes and 1 failure after upload", %{conn: conn} do
     {:ok, view, _} = live(conn, ~p"/charliecards/import")
 

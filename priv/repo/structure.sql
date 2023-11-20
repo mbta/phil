@@ -30,15 +30,16 @@ CREATE TABLE public.charlie_cards (
     batch_sequence_number integer NOT NULL,
     card_valid_from timestamp(0) without time zone NOT NULL,
     card_valid_until timestamp(0) without time zone NOT NULL,
-    product character varying(255) NOT NULL,
     product_valid_from timestamp(0) without time zone NOT NULL,
     product_valid_until timestamp(0) without time zone NOT NULL,
     production_date timestamp(0) without time zone NOT NULL,
     sequence_number integer NOT NULL,
+    serial_number character varying(255) NOT NULL,
     status character varying(255) DEFAULT 'unknown'::character varying NOT NULL,
     inserted_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    serial_number character varying(255)
+    medium character varying(255) NOT NULL,
+    product_id bigint
 );
 
 
@@ -62,6 +63,38 @@ ALTER SEQUENCE public.charlie_cards_id_seq OWNED BY public.charlie_cards.id;
 
 
 --
+-- Name: products; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.products (
+    id bigint NOT NULL,
+    name character varying(255) NOT NULL,
+    ticket_type_id integer NOT NULL,
+    inserted_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.products_id_seq OWNED BY public.products.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -79,11 +112,26 @@ ALTER TABLE ONLY public.charlie_cards ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
+-- Name: products id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.products ALTER COLUMN id SET DEFAULT nextval('public.products_id_seq'::regclass);
+
+
+--
 -- Name: charlie_cards charlie_cards_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.charlie_cards
     ADD CONSTRAINT charlie_cards_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
 
 
 --
@@ -102,8 +150,24 @@ CREATE UNIQUE INDEX charlie_cards_serial_number_index ON public.charlie_cards US
 
 
 --
+-- Name: products_ticket_type_id_index; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX products_ticket_type_id_index ON public.products USING btree (ticket_type_id);
+
+
+--
+-- Name: charlie_cards charlie_cards_product_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.charlie_cards
+    ADD CONSTRAINT charlie_cards_product_id_fkey FOREIGN KEY (product_id) REFERENCES public.products(id) ON DELETE CASCADE;
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 INSERT INTO public."schema_migrations" (version) VALUES (20231113160043);
+INSERT INTO public."schema_migrations" (version) VALUES (20231114150716);
 INSERT INTO public."schema_migrations" (version) VALUES (20231115170528);

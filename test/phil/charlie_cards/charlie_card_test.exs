@@ -7,22 +7,25 @@ defmodule Phil.CharlieCards.CharlieCardTest do
 
   describe "changeset/1" do
     test "enforces a unique constraint on serial numbers" do
-      CharlieCardFactory.insert(:charlie_card, serial_number: "1")
+      existing_charlie_card = CharlieCardFactory.insert(:charlie_card)
 
-      charlie_card =
-        CharlieCardFactory.build(:charlie_card, serial_number: "1")
+      new_charlie_card =
+        CharlieCardFactory.build(:charlie_card,
+          serial_number: existing_charlie_card.serial_number
+        )
         |> Map.from_struct()
+        |> Map.put(:product_id, existing_charlie_card.product_id)
         |> CharlieCard.changeset()
 
-      assert {:error, changeset} = Repo.insert(charlie_card)
+      assert {:error, changeset} = Repo.insert(new_charlie_card)
       assert {"has already been taken", _} = changeset.errors[:serial_number]
     end
   end
 
-  test "products/0 returns a list of atoms" do
-    products = CharlieCard.products()
+  test "media/0 returns a list of atoms" do
+    media = CharlieCard.media()
 
-    for a <- products, do: assert(is_atom(a))
+    for a <- media, do: assert(is_atom(a))
   end
 
   test "statuses/0 returns a list of atoms" do
