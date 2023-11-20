@@ -28,6 +28,7 @@ defmodule Phil.Products.Importer do
       end
     end)
     |> Enum.group_by(fn {status, _} -> status end, fn {_, value} -> value end)
+    |> (&Map.merge(%{error: [], ok: []}, &1)).()
   end
 
   defp row_to_changeset(row) do

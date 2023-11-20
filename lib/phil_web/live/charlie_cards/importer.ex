@@ -29,7 +29,7 @@ defmodule PhilWeb.Live.CharlieCards.Importer do
       end)
       |> List.first()
 
-    {:noreply, assign(socket, results: Map.merge(socket.assigns.results, results))}
+    {:noreply, assign(socket, results: results)}
   end
 
   @impl true
