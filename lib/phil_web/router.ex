@@ -39,7 +39,7 @@ defmodule PhilWeb.Router do
 
     get "/", PageController, :home
 
-    live("/charliecards/import", Live.CharlieCards.ImportFoo)
+    live("/charliecards/import", Live.CharlieCards.Importer)
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

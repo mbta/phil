@@ -1,4 +1,4 @@
-defmodule PhilWeb.Live.CharlieCards.ImportFoo do
+defmodule PhilWeb.Live.CharlieCards.Importer do
   @moduledoc """
   LiveView for importing CharlieCard inventory into Phil.Application
 

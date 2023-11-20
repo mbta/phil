@@ -1,4 +1,4 @@
-defmodule PhilWeb.Live.CharlieCards.Import do
+defmodule PhilWeb.Live.CharlieCards.ImporterTest do
   use PhilWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
