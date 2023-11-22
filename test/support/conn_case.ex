@@ -25,8 +25,9 @@ defmodule PhilWeb.ConnCase do
       use PhilWeb, :verified_routes
 
       # Import conveniences for testing with connections
-      import Plug.Conn
       import Phoenix.ConnTest
+      import Plug.Conn
+
       import PhilWeb.ConnCase
     end
   end

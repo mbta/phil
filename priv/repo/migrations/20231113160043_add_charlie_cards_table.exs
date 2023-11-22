@@ -2,7 +2,7 @@ defmodule Phil.Repo.Migrations.AddCharlieCardsTable do
   use Ecto.Migration
 
   def change do
-    create table("charlie_cards") do
+    create table(:charlie_cards) do
       add :batch_number, :integer, null: false
       add :batch_sequence_number, :integer, null: false
       add :card_valid_from, :utc_datetime, null: false

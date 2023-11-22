@@ -1,0 +1,124 @@
+Stored Value (Arbitrary Amount),6 071 001 00
+Local Bus Multi Ride (Loaded as ST),2 116 001 00
+Rapid Transit Multi Ride (Loaded as ST),3 117 001 00
+Inner Express Bus Multi Ride (Loaded as ST),6 118 001 00
+Outer Express Bus Multi Ride (Loaded as ST),6 119 001 00
+1-Day LinkPass,6 093 001 00
+7-Day LinkPass,6 095 001 00
+Commuter Rail 1-Day Zone 1A,6 190 001 00
+Commuter Rail 7-Day Zone 1A,6 192 001 00
+Local Bus Pass,2 020 001 00
+Monthly LinkPass,6 028 001 00
+Inner Express Bus Monthly Pass,6 012 001 00
+Outer Express Bus Pass,6 013 001 00
+Senior LinkPass,1 024 005 00
+Student LinkPass,1 024 025 00
+TAP LinkPass,1 024 006 00
+Youth LinkPass,6 028 035 00
+Commuter Boat Pass,6 026 001 00
+30 Day Reduced Fare Permit,6 062 024 00
+CR Monthly Pass Adult Zone 1a,3 023 001 01
+CR Monthly Pass Adult Zone 1,3 023 001 03
+CR Monthly Pass Adult Zone 2,3 023 001 04
+CR Monthly Pass Adult Zone 3,3 023 001 05
+CR Monthly Pass Adult Zone 4,3 023 001 06
+CR Monthly Pass Adult Zone 5,3 023 001 07
+CR Monthly Pass Adult Zone 6,3 023 001 08
+CR Monthly Pass Adult Zone 7,3 023 001 09
+CR Monthly Pass Adult Zone 8,3 023 001 10
+CR Monthly Pass Adult Zone 9,3 023 001 11
+CR Monthly Pass Adult Zone 10,3 023 001 12
+CR OW Adult Zone 1a,3 001 001 01
+CR OW Adult Zone 1,3 001 001 03
+CR OW Adult Zone 2,3 001 001 04
+CR OW Adult Zone 3,3 001 001 05
+CR OW Adult Zone 4,3 001 001 06
+CR OW Adult Zone 5,3 001 001 07
+CR OW Adult Zone 6,3 001 001 08
+CR OW Adult Zone 7,3 001 001 09
+CR OW Adult Zone 8,3 001 001 10
+CR OW Adult Zone 9,3 001 001 11
+CR OW Adult Zone 10,3 001 001 12
+CR OW Zone 1a Half Fare,3 001 015 01
+CR OW Zone 1 Half Fare,3 001 015 03
+CR OW Zone 2 Half Fare,3 001 015 04
+CR OW Zone 3 Half Fare,3 001 015 05
+CR OW Zone 4 Half Fare,3 001 015 06
+CR OW Zone 5 Half Fare,3 001 015 07
+CR OW Zone 6 Half Fare,3 001 015 08
+CR OW Zone 7 Half Fare,3 001 015 09
+CR OW Zone 8 Half Fare,3 001 015 10
+CR OW Zone 9 Half Fare,3 001 015 11
+CR OW Zone 10 Half Fare,3 001 015 12
+CR RT Adult Zone 1a,3 004 001 01
+CR RT Adult Zone 1,3 004 001 03
+CR RT Adult Zone 2,3 004 001 04
+CR RT Adult Zone 3,3 004 001 05
+CR RT Adult Zone 4,3 004 001 06
+CR RT Adult Zone 5,3 004 001 07
+CR RT Adult Zone 6,3 004 001 08
+CR RT Adult Zone 7,3 004 001 09
+CR RT Adult Zone 8,3 004 001 10
+CR RT Adult Zone 9,3 004 001 11
+CR RT Adult Zone 10,3 004 001 12
+CR RT Zone 1a Half Fare,3 004 015 01
+CR RT Zone 1 Half Fare,3 004 015 03
+CR RT Zone 2 Half Fare,3 004 015 04
+CR RT Zone 3 Half Fare,3 004 015 05
+CR RT Zone 4 Half Fare,3 004 015 06
+CR RT Zone 5 Half Fare,3 004 015 07
+CR RT Zone 6 Half Fare,3 004 015 08
+CR RT Zone 7 Half Fare,3 004 015 09
+CR RT Zone 8 Half Fare,3 004 015 10
+CR RT Zone 9 Half Fare,3 004 015 11
+CR RT Zone 10 Half Fare,3 004 015 12
+CR Monthly IZ Pass 1 Zone,3 025 001 01
+CR Monthly IZ Pass 2 Zones,3 025 001 02
+CR Monthly IZ Pass 3 Zones,3 025 001 03
+CR Monthly IZ Pass 4 Zones,3 025 001 04
+CR Monthly IZ Pass 5 Zones,3 025 001 05
+CR Monthly IZ Pass 6 Zones,3 025 001 06
+CR Monthly IZ Pass 7 Zones,3 025 001 07
+CR Monthly IZ Pass 8 Zones,3 025 001 08
+CR Monthly IZ Pass 9 Zones,3 025 001 09
+CR Monthly IZ Pass 10 Zones,3 025 001 10
+CR OW IZ Adult 1 Zone,3 003 001 01
+CR OW IZ Adult 2 Zones,3 003 001 02
+CR OW IZ Adult 3 Zones,3 003 001 03
+CR OW IZ Adult 4 Zones,3 003 001 04
+CR OW IZ Adult 5 Zones,3 003 001 05
+CR OW IZ Adult 6 Zones,3 003 001 06
+CR OW IZ Adult 7 Zones,3 003 001 07
+CR OW IZ Adult 8 Zones,3 003 001 08
+CR OW IZ Adult 9 Zones,3 003 001 09
+CR OW IZ Adult 10 Zone,3 003 001 10
+CR OW IZ 1 Zone Half Fare,3 003 015 01
+CR OW IZ 2 Zones Half Fare,3 003 015 02
+CR OW IZ 3 Zones Half Fare,3 003 015 03
+CR OW IZ 4 Zones Half Fare,3 003 015 04
+CR OW IZ 5 Zones Half Fare,3 003 015 05
+CR OW IZ 6 Zones Half Fare,3 003 015 06
+CR OW IZ 7 Zones Half Fare,3 003 015 07
+CR OW IZ 8 Zones Half Fare,3 003 015 08
+CR OW IZ 9 Zones Half Fare,3 003 015 09
+CR OW IZ 10 Zones Half Fare,3 003 015 10
+CR RT Adult IZ 1 Zone,3 007 001 01
+CR RT Adult IZ 2 Zones,3 007 001 02
+CR RT Adult IZ 3 Zones,3 007 001 03
+CR RT Adult IZ 4 Zones,3 007 001 04
+CR RT Adult IZ 5 Zones,3 007 001 05
+CR RT Adult IZ 6 Zones,3 007 001 06
+CR RT Adult IZ 7 Zones,3 007 001 07
+CR RT Adult IZ 8 Zones,3 007 001 08
+CR RT Adult IZ 9 Zones,3 007 001 09
+CR RT Adult IZ 10 Zones,3 007 001 10
+CR RT IZ 1 Zone Half Fare,3 007 015 01
+CR RT IZ 2 Zones Half Fare,3 007 015 02
+CR RT IZ 3 Zones Half Fare,3 007 015 03
+CR RT IZ 4 Zones Half Fare,3 007 015 04
+CR RT IZ 5 Zones Half Fare,3 007 015 05
+CR RT IZ 6 Zones Half Fare,3 007 015 06
+CR RT IZ 7 Zones Half Fare,3 007 015 07
+CR RT IZ 8 Zones Half Fare,3 007 015 08
+CR RT IZ 9 Zones Half Fare,3 007 015 09
+CR RT IZ 10 Zones Half Fare,3 007 015 10
