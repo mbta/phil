@@ -1,5 +1,7 @@
 # Phil
 
+> NOTE: This repo has been archived. Phil has been moved into MyCharlie ([mbta/my_charlie](/mbta/my_charlie)). All features related to fulfillment and card adminstration are being added to MyCharlie.
+
 Phil is a backoffice-facing application used to manage card/pass fulfillment concerns.
 
 [Product scope for Phil is documented in Notion here.](https://www.notion.so/mbta-downtown-crossing/Phil-Fulfillment-Product-Scope-30f5ec077fdf45fabdd33e5a367e4996?pvs=4)
